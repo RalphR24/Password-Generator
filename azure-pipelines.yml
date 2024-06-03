@@ -18,16 +18,3 @@ steps:
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
 
-- task: WebInspectScan@1
-  inputs:
-    scanUrl: 'http://test-server/app'
-    scanPolicy: 'scanpolicy.xml'
-    scanResultsFile: '$(Build.ArtifactStagingDirectory)/webinspect-results.xml'
-
-- task: FortifyUploadFPR@1
-  inputs:
-    filePath: '$(Build.ArtifactStagingDirectory)/webinspect-results.xml'
-    applicationName: 'MyApp'
-    applicationVersion: '1.0'
-    sscUrl: 'http://ssc-server:8080/ssc'
-    sscAuthToken: '$(sscAuthToken)'
